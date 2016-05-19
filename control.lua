@@ -1,4 +1,7 @@
 require("defines")
+require("gdiw")
+
+hasGDIW = checkGDIW() -- get GDIW status from external require
 
 blpflip_location = "top" -- top/left/center
 blpflip_flow_direction = "horizontal" -- horizontal/vertical
@@ -21,6 +24,9 @@ local function flip_v(player_index)
 					end
 				else
 					ents[i].direction = (12 - dir)%8
+				end
+				if (ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW then
+					ents[i].recipie = flipGDIWrecipe(ents[i], "v")
 				end
 				ents[i].position.y = -ents[i].position.y
 			end
@@ -57,6 +63,9 @@ local function flip_h(player_index)
 					end
 				else
 					ents[i].direction = (16 - dir)%8
+				end
+				if (ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW then
+					ents[i].recipie = flipGDIWrecipe(ents[i], "h")
 				end
 				ents[i].position.x = -ents[i].position.x
 			end
