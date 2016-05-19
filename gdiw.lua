@@ -49,7 +49,7 @@ local function flipGDIWrecipe(en)
     return "flame-thrower-ammo-GDIW"
 
   -- Should be fine, cant match something not installed
-  if en.recipe=="bob-oil-processing"  then
+  elseif en.recipe=="bob-oil-processing"  then
     return "bob-oil-processing-GDIW"
   elseif en.recipe=="bob-oil-processing-GDIW"  then
     return "bob-oil-processing"
