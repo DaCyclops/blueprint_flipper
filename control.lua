@@ -1,7 +1,10 @@
 require("defines")
 require("gdiw")
 
-hasGDIW = checkGDIW() -- get GDIW status from external require
+local hasGDIW = false
+if data.raw["recipe"]["advanced-oil-processing-GDIW-3"] then
+    hasGDIW=true
+end 
 
 blpflip_location = "top" -- top/left/center
 blpflip_flow_direction = "horizontal" -- horizontal/vertical
