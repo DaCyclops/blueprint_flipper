@@ -1,10 +1,10 @@
 {
   "name": "blueprint_flipper",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "title": "Blueprint Flipper",
   "author": "GopherAtl, Roktaal",
   "homepage": "https://github.com/Roktaal/blueprint_flipper",
   "contact": "roktaal@gmail.com",
   "description": "Adds buttons for mirroring a held blueprint",
-  "dependencies": ["base >= 0.12.11"]
+  "dependencies": ["base >= 0.12.11", "? GDIW >= 1.1.2"]
 }
