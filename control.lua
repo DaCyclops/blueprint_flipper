@@ -26,7 +26,7 @@ local function flip_v(player_index)
 					ents[i].direction = (12 - dir)%8
 				end
 				if (ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW then
-					ents[i].recipie = flipGDIWrecipe(ents[i], "v")
+					ents[i].recipie = flipGDIWrecipe(ents[i])
 				end
 				ents[i].position.y = -ents[i].position.y
 			end
@@ -65,7 +65,7 @@ local function flip_h(player_index)
 					ents[i].direction = (16 - dir)%8
 				end
 				if (ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW then
-					ents[i].recipie = flipGDIWrecipe(ents[i], "h")
+					ents[i].recipie = flipGDIWrecipe(ents[i])
 				end
 				ents[i].position.x = -ents[i].position.x
 			end
