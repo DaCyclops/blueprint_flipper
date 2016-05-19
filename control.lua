@@ -1,10 +1,11 @@
 require("defines")
 require("gdiw")
 
-local hasGDIW = false
-if data.raw["recipe"]["advanced-oil-processing-GDIW-3"] then
-    hasGDIW=true
-end 
+local hasGDIW = true
+--if data.raw["recipe"]["advanced-oil-processing-GDIW-3"] then
+--    hasGDIW=true
+--end 
+--if game.players[next(game.players)].force.recipes["advanced-oil-processing-GDIW-3"] then hasGDIW=true end
 
 blpflip_location = "top" -- top/left/center
 blpflip_flow_direction = "horizontal" -- horizontal/vertical
@@ -28,8 +29,8 @@ local function flip_v(player_index)
 				else
 					ents[i].direction = (12 - dir)%8
 				end
-				if (ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW then
-					ents[i].recipie = flipGDIWrecipe(ents[i])
+				if ((ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW) then
+					ents[i].recipe = flipGDIWrecipe(ents[i])
 				end
 				ents[i].position.y = -ents[i].position.y
 			end
@@ -67,8 +68,8 @@ local function flip_h(player_index)
 				else
 					ents[i].direction = (16 - dir)%8
 				end
-				if (ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW then
-					ents[i].recipie = flipGDIWrecipe(ents[i])
+				if ((ents[i].name == "oil-refinery" or ents[i].name == "chemical-plant") and hasGDIW) then
+					ents[i].recipe = flipGDIWrecipe(ents[i])
 				end
 				ents[i].position.x = -ents[i].position.x
 			end
@@ -109,4 +110,4 @@ end)
 script.on_event(defines.events.on_player_created,function(event) doButtons(event.player_index) end)
 
 script.on_configuration_changed(function(data) for i=1,#game.players do doButtons(i) end end)
-script.on_init(function() for i=1,#game.players do doButtons(i) end end)
+script.on_init(function(data) for i=1,#game.players do doButtons(i) end if game.players[next(game.players)].force.recipes["advanced-oil-processing-GDIW-3"] then hasGDIW=true end end)
